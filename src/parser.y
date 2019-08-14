@@ -162,7 +162,8 @@ input:    /* empty */
         | input
           TOK_USE
             {
-              rootmodule->registerUse(std::string($2));
+              rootmodule->registerUse(std::string($2), LOC(@$));
+              // std::cout << "yo yo yo "  << "  1--> " << std::to_string((@$).first_line) << " 2--> " << std::to_string((@$).first_column) << " 3--> " << std::to_string((@$).last_line)<< " 4--> " << std::to_string((@$).last_column) << "  --> " << std::string($2) << std::endl;
               free($2);
             }
         | input statement

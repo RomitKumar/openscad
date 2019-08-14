@@ -54,8 +54,9 @@ void FileModule::print(std::ostream &stream, const std::string &indent) const
 	scope.print(stream, indent);
 }
 
-void FileModule::registerUse(const std::string path)
+void FileModule::registerUse(const std::string path, const Location &loc)
 {
+	std::cout << "Check  --> " << loc.toRelativeString(path) << std::endl;
 	auto ext = fs::path(path).extension().generic_string();
 	
 	if (boost::iequals(ext, ".otf") || boost::iequals(ext, ".ttf")) {
